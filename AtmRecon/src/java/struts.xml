@@ -1,0 +1,680 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="false"/>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <!-- Start User Mapping --> 
+        
+<!--        <interceptors>
+                        <interceptor name="authorisation"
+                                class="com.activedge.atm.web.common.AuthorisationInterceptor">                            
+                        </interceptor>                    
+                        <interceptor name="authentication"
+                                class="com.activedge.atm.web.common.AuthorisationInterceptor">                            
+                        </interceptor>
+                        <interceptor-stack name="authStack">
+
+                            
+                                <interceptor-ref name="authentication"></interceptor-ref>
+                                <interceptor-ref name="authorisation"></interceptor-ref>
+                                <interceptor-ref name="defaultStack"></interceptor-ref>
+                            <interceptor-ref name="store">
+                                <param name="operationMode">AUTOMATIC</param>
+                            </interceptor-ref>                                
+                        </interceptor-stack>
+		</interceptors>
+                
+		<default-interceptor-ref name="authStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login" type="redirect">/initHome.action</result>
+                        <result name="error2" >/globalresult.jsp</result>
+                        <result name="error3" >/globalresult.jsp</result>
+                        <result name="error4" >/globalresult.jsp</result>
+                        <result name="auth">/globalresult.jsp</result>
+		</global-results>
+
+             <global-exception-mappings>  
+                <exception-mapping result="error2" exception="java.lang.Exception"></exception-mapping>  
+                <exception-mapping result="error3" exception="java.lang.Error"></exception-mapping>  
+                <exception-mapping result="error4" exception="java.lang.RuntimeException"></exception-mapping>  
+            </global-exception-mappings>  -->
+
+         
+        <action name="initHome"
+                class="com.activedge.atm.user.action.UserAction"
+                method="initHome">
+            <interceptor-ref name="defaultStack"></interceptor-ref>            
+            <result name="success">/WEB-INF/pages/atmHome.jsp</result>
+            <result name="input">/redirect.jsp</result>
+            
+        </action> 
+        <action name="logOffHome"
+                class="com.activedge.atm.user.action.UserAction"
+                method="logOffHome">
+            <interceptor-ref name="defaultStack"></interceptor-ref>            
+            <result name="success">/redirect.jsp</result>
+        </action> 
+        <action name="initUser"
+                class="com.activedge.atm.user.action.UserAction"
+                method="execute">
+            <exception-mapping exception="java.lang.Exception"
+                            result="error2" />
+            <result name="success">/WEB-INF/pages/view/userlist.jsp</result> 
+        </action>
+        <action name="createNewUser"
+                class="com.activedge.atm.user.action.UserAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/userinput.jsp</result> 
+        </action>        
+        <action name="createUser"
+                class="com.activedge.atm.user.action.UserAction"
+                method="createUser">
+            
+            <result name="success">/WEB-INF/pages/view/userlist.jsp</result>  
+        </action>        
+        <action name="updateUser"
+                class="com.activedge.atm.user.action.UserAction"
+                method="updateUser">   
+            <result name="success">/WEB-INF/pages/view/userlist.jsp</result>   
+        </action>  
+        <action name="deleteUser"
+                class="com.activedge.atm.user.action.UserAction"
+                method="deleteUser">    
+            <result name="success">/WEB-INF/pages/view/userlist.jsp</result>   
+        </action>  
+        <action name="findAllUsers"
+                class="com.activedge.atm.user.action.UserAction"
+                method="findAllUsers">  
+            <result name="success">/WEB-INF/pages/view/userlist.jsp</result>  
+        </action>                          
+        <action name="viewUser"
+                class="com.activedge.atm.user.action.UserAction"
+                method="viewUser">   
+            <result name="success">/WEB-INF/pages/input/userinput.jsp</result>  
+        </action>     
+        <action name="findUsersByCriteria"
+                class="com.activedge.atm.user.action.UserAction"
+                method="findUsersByCriteria"> 
+            <result name="success">/WEB-INF/pages/view/userlist.jsp</result>  
+        </action> 
+        
+        <action name="initUsersByCriteria"
+                class="com.activedge.atm.user.action.UserAction"
+                method="findAllUsers"> 
+            <result name="success">/WEB-INF/pages/view/userSelect.jsp</result>  
+        </action> 
+        
+        <action name="findNewUsersByCriteria"
+                class="com.activedge.atm.user.action.UserAction"
+                method="findUsersByCriteria"> 
+            <result name="success">/WEB-INF/pages/view/userSelect.jsp</result>  
+        </action> 
+        
+        <!-- End User Mapping --> 
+        
+        
+        <!--Alert-->
+        
+        
+        <action name="initAlert"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="access">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="createAlert"
+                 class="com.activedge.atm.alert.action.AlertAction"
+                 method="createAlert">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="createNewAlert"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/alertinput.jsp</result>
+        </action>
+                                                
+        <action name="findAllAlerts"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="findAllAlerts">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="viewAlert"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="viewAlert">
+            <result name="success">/WEB-INF/pages/input/alertinput.jsp</result>
+        </action>
+        
+        <action name="setupAlertAction"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="access">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="removeAlert"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="deleteAlert">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="deleteAlert"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="deleteAlert">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="updateAlert"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="updateAlert">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        <action name="findAlertsByCriteria"
+                class="com.activedge.atm.alert.action.AlertAction"
+                method="findAlertsByCriteria">
+            <result name="success">/WEB-INF/pages/view/alertlist.jsp</result>
+        </action>
+        
+        
+        
+        <!--End of Alerts Mapping -->
+        
+        
+        
+        <!--Message-->
+        
+        
+        <action name="initMessages"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="access">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="createMessage"
+                 class="com.activedge.atm.message.action.MessageAction"
+                 method="createMessage">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="createNewMessage"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="createNewMessage">
+            <result name="success">/WEB-INF/pages/input/messageinput.jsp</result>
+        </action>
+                                                
+        <action name="findAllMessages"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="findAllMessages">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="viewMessage"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="viewMessage">
+            <result name="success">/WEB-INF/pages/input/messageinput.jsp</result>
+        </action>
+        
+        <action name="setupMessageAction"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="access">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="removeMessage"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="deleteMessage">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="deleteMessage"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="deleteMessage">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="updateMessage"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="updateMessage">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        <action name="findMessagesByCriteria"
+                class="com.activedge.atm.message.action.MessageAction"
+                method="findMessagesByCriteria">
+            <result name="success">/WEB-INF/pages/view/messagelist.jsp</result>
+        </action>
+        
+        
+        <!--Workflow Mappings-->
+        
+        
+         <action name="initWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/workflowlist.jsp</result> 
+        </action>
+        
+        <action name="createNewWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/workflowinput.jsp</result> 
+        </action>       
+
+        <action name="updateWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="updateWorkflow">          
+            <result name="success">/WEB-INF/pages/view/workflowlist.jsp</result>   
+        </action> 
+        
+        <action name="createWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="createWorkflow">          
+            <result name="success">/WEB-INF/pages/view/workflowlist.jsp</result>   
+        </action>         
+        
+        <action name="deleteWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="deleteWorkflow">           
+            <result name="success">/WEB-INF/pages/view/workflowlist.jsp</result>   
+        </action> 
+        
+        <action name="findAllWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="findAllWorkflow">           
+            <result name="success">/WEB-INF/pages/view/workflowlist.jsp</result>  
+        </action>          
+                       
+        <action name="viewWorkflow"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="viewWorkflow">
+            <result name="success">/WEB-INF/pages/input/workflowinput.jsp</result> 
+        </action> 
+        
+        <action name="findWorkflowsByCriteria"
+                class="com.activedge.atm.workflow.action.WorkflowAction"
+                method="findWorkflowsByCriteria">          
+            <result name="success">/WEB-INF/pages/view/workflowlist.jsp</result>   
+        </action>
+        
+        <!--/ End of Workflow Mappings-->
+        
+        <!-- Template Link -->
+        
+        <action name="template"
+                class="com.activedge.atm.user.action.UserAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/templates/index.html</result> 
+        </action>
+       
+<!--Analytics Mapping -->
+        <action name="initAnalytics"
+                class="com.activedge.atm.dashboard.action.DashboardAction"
+                method="initReport">
+            <result name="success">/WEB-INF/pages/input/analytics.jsp</result>
+        </action>
+                
+<!--        <action name="access"
+                class="com.activedge.atm.dashboard.action.DashboardAction"
+                method="initAnalytics">
+            <result name="success">/WEB-INF/pages/view/dashboard.jsp</result>
+        </action> -->
+        <!--End Analytics Mapping -->
+        
+<!--Start Role Mapping -->
+         <action name="initRole"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result> 
+        </action>
+        
+        <action name="createNewRole"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/roleinput.jsp</result> 
+        </action>       
+
+        <action name="updateRole"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="updateRole">          
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result>   
+        </action> 
+        
+        <action name="createRole"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="createRole">          
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result>   
+        </action>         
+        
+        <action name="deleteRole"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="deleteRole">           
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result>   
+        </action> 
+        
+        <action name="findAllRoles"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="findAllRoles">           
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result>  
+        </action>          
+                       
+        <action name="viewRole"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="viewRole">
+            <result name="success">/WEB-INF/pages/input/roleinput.jsp</result> 
+        </action> 
+        
+        <action name="findRolesByCriteria"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="findRolesByCriteria">          
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result>   
+        </action>
+
+        <!--End Role Mapping-->
+        
+<!--Start Task Mapping -->
+         <action name="initTask"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/tasklist.jsp</result> 
+        </action>
+        
+        <action name="createNewTask"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/taskinput.jsp</result> 
+        </action>       
+
+        <action name="updateTask"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="updateTask">          
+            <result name="success">/WEB-INF/pages/view/tasklist.jsp</result>   
+        </action> 
+        
+        <action name="createTask"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="createTask">          
+            <result name="success">/WEB-INF/pages/view/tasklist.jsp</result>   
+        </action>         
+        
+        <action name="deleteTask"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="deleteTask">           
+            <result name="success">/WEB-INF/pages/view/tasklist.jsp</result>   
+        </action> 
+        
+        <action name="findAllTasks"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="findAllTasks">           
+            <result name="success">/WEB-INF/pages/view/tasklist.jsp</result>  
+        </action>          
+                       
+        <action name="viewTask"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="viewTask">
+            <result name="success">/WEB-INF/pages/input/taskinput.jsp</result> 
+        </action> 
+        
+        <action name="findTasksByCriteria"
+                class="com.activedge.atm.task.action.TaskAction"
+                method="findTasksByCriteria">          
+            <result name="success">/WEB-INF/pages/view/tasklist.jsp</result>   
+        </action>
+        <!--End Task Mapping-->
+        
+<!--Start Branch Mapping -->
+         <action name="initBranch"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/branchlist.jsp</result> 
+        </action>
+        
+        <action name="createNewBranch"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/branchinput.jsp</result> 
+        </action>       
+
+        <action name="updateBranch"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="updateBranch">          
+            <result name="success">/WEB-INF/pages/view/branchlist.jsp</result>   
+        </action> 
+        
+        <action name="createBranch"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="createBranch">          
+            <result name="success">/WEB-INF/pages/view/branchlist.jsp</result>   
+        </action>         
+        
+        <action name="deleteBranch"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="deleteBranch">           
+            <result name="success">/WEB-INF/pages/view/branchlist.jsp</result>   
+        </action> 
+        
+        <action name="findAllBranches"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="findAllBranches">           
+            <result name="success">/WEB-INF/pages/view/branchlist.jsp</result>  
+        </action>          
+                       
+        <action name="viewBranch"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="viewBranch">
+            <result name="success">/WEB-INF/pages/input/branchinput.jsp</result> 
+        </action> 
+        
+        <action name="findBranchesByCriteria"
+                class="com.activedge.atm.branch.action.BranchAction"
+                method="findBranchesByCriteria">          
+            <result name="success">/WEB-INF/pages/view/branchlist.jsp</result>   
+        </action>
+        <!--End Branch Mapping-->
+        
+        <!--Start Terminal Mapping -->
+         <action name="initAgent"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/agentlist.jsp</result> 
+        </action>
+        
+        <action name="createNewAgent"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/agentinput.jsp</result> 
+        </action>       
+
+        <action name="updateAgent"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="updateAgent">          
+            <result name="success">/WEB-INF/pages/view/agentlist.jsp</result>   
+        </action> 
+        
+        <action name="createAgent"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="createAgent">          
+            <result name="success">/WEB-INF/pages/view/agentlist.jsp</result>   
+        </action>         
+        
+        <action name="deleteAgent"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="deleteAgent">           
+            <result name="success">/WEB-INF/pages/view/agentlist.jsp</result>   
+        </action> 
+        
+        <action name="findAllAgents"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="findAllAgents">           
+            <result name="success">/WEB-INF/pages/view/agentlist.jsp</result>  
+        </action>          
+                       
+        <action name="viewAgent"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="viewAgent">
+            <result name="success">/WEB-INF/pages/input/agentinput.jsp</result> 
+        </action> 
+        
+        <action name="findAgentsByCriteria"
+                class="com.activedge.atm.agent.action.AgentAction"
+                method="findAgentsByCriteria">          
+            <result name="success">/WEB-INF/pages/view/agentlist.jsp</result>   
+        </action>
+
+        <!--End Terminal Mapping-->
+                
+        <!--Start RoleTask Mapping-->
+        <action name="createNewRoleTask"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="initCreateRoleTask">
+            <result name="success">/WEB-INF/pages/input/roleinput.jsp</result> 
+        </action> 
+        
+        <action name="createRoleTask"
+                class="com.activedge.atm.role.action.RoleAction"
+                method="createRoleTask">
+            <result name="success">/WEB-INF/pages/view/rolelist.jsp</result> 
+        </action> 
+        
+        <!--End RoleTask Mapping-->
+        
+
+        <!--Start File Download mapping -->   
+        <action name="invent"
+                class="com.activedge.atm.file.action.FileAction"
+                method="listfiles">
+            
+            <result name="success">/WEB-INF/pages/input/fileinput.jsp</result>
+            
+        </action>
+     
+        <action name="initFile"
+                class="com.activedge.atm.file.action.FileAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/input/fileinput.jsp</result>
+            <result name="error">/WEB-INF/pages/view/filenotfound.jsp</result>
+        </action>
+        <action name="download"
+                class="com.activedge.atm.file.action.FileAction"
+                method="download">
+            <result name="success">/WEB-INF/pages/HelloWorldfile.jsp</result>
+        </action>
+        
+        <action name="downloadFile" class="com.activedge.atm.file.action.FileAction" method="download">
+            <result name="success" type="stream" >
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+                <!--Start Report mapping -->
+     
+        <action name="initReport"
+                class="com.activedge.atm.reportportal.action.ReportPortalAction"
+                method="execute">      
+            <result name="success">/WEB-INF/pages/view/dashboardreportlist.jsp</result>           
+        </action>
+        
+<!--     <action name="findAllReportPortals"
+                class="com.activedge.atm.reportportal.action.ReportPortalAction"
+                method="findAllReportPortals">            
+            <result name="success">/report2old_20170809.jsp</result>           
+        </action>-->
+        
+        <action name="findReportsByCriteria"
+                class="com.activedge.atm.reportportal.action.ReportPortalAction"
+                method="findReportsByCriteria">         
+            <result name="success">/WEB-INF/pages/view/dashboardreportlist.jsp</result>           
+        </action>
+        
+        <action name="findReportsByDate"
+                class="com.activedge.atm.reportportal.action.ReportPortalAction"
+                method="findReportsByDate">           
+            <result name="success">/WEB-INF/pages/view/dashboardreportlist.jsp</result>          
+        </action>
+            <!--End Report mapping -->  
+            
+                 <!--Start Dashboard mapping -->
+        <action name="findAllDashboardViewers"
+                class="com.activedge.atm.dashboard.action.DashboardAction"
+                method="findAllDashboardViewers">         
+            <result name="success">/WEB-INF/pages/view/dashboardreportlist.jsp</result>      
+        </action>
+        
+<!--        
+        <action name="initReport"
+                class="com.activedge.atm.dashboard.action.DashboardAction"
+                method="initReport">
+            <result name="success">/WEB-INF/pages/view/dashboardreport.jsp</result>
+        </action> -->
+        
+        <action name="initDashboard"
+                class="com.activedge.atm.dashboard.action.DashboardAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/dashboardreport.jsp</result>         
+        </action>
+            
+        <!--Start File Download mapping -->
+        
+        <!--Start JournalViewer mapping -->
+        <action name="initJournalViewer"
+                class="com.activedge.atm.journalviewer.action.JournalViewerAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/view/journalviewerlist.jsp</result>
+        </action> 
+        
+        <action name="findJournalsByCriteria"
+                class="com.activedge.atm.journalviewer.action.JournalViewerAction"
+                method="findJournalsByCriteria">
+            
+            <result name="success">/WEB-INF/pages/view/journalviewerlist.jsp</result>
+             
+        </action>
+        
+         <!-- Profile Page Link -->
+         <action name="profilePage"
+                 class="com.activedge.atm.profile.action.ProfileAction"
+                 method="execute" >
+             <result name="success">/profile.jsp</result>
+         </action>
+        <!-- Template Link -->
+        
+        <action name="template"
+                class="com.activedge.atm.user.action.UserAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/templates/index.html</result> 
+        </action>
+        
+         <!--Start Dashboard mapping -->
+<!--        <action name="findAllDashboardViewers"
+   
+             class="com.activedge.journalviewer.action.JournalViewerAction"
+          
+      method="findAllDashboardViewers">
+            
+            <result 
+name="success">dashboardreport.jsp</result>
+            
+        </action>
+        -->
+  
+     
+        
+        
+<!--        <action name="initReport"
+                
+                class="com.activedge.atm.dashboard.action.DashboardAction"
+                
+                method="execute">
+            <result 
+                name="success">/WEB-INF/pages/input/analytics.jsp</result>        
+        </action>-->
+        
+        <!--End Dashboard mapping -->
+    </package>
+</struts>

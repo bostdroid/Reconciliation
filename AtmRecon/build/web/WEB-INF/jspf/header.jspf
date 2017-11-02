@@ -1,0 +1,192 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+    
+    
+<!-- Nav Bar -->
+<div id="navbar" class="navbar navbar-default          ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only">Toggle sidebar</span>
+                
+            <span class="icon-bar"></span>
+                
+            <span class="icon-bar"></span>
+                
+            <span class="icon-bar"></span>
+        </button>
+            
+        <div class="navbar-header pull-left">
+            <a href="index.html" class="navbar-brand">
+                <small>
+                    <i class="fa fa-leaf"></i>
+                    ATM Reconciliation Tool
+                </small>
+            </a>
+        </div>
+            
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="grey dropdown-modal">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-tasks"></i>
+                        <span class="badge badge-grey">${workflowSize}</span>
+                    </a>
+                        
+                    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-check"></i>
+                            ${workflowSize} Tasks to complete
+                        </li>
+                            
+                        <li class="dropdown-content">
+                            <ul class="dropdown-menu dropdown-navbar">
+                                <s:iterator value="workflows">
+                                    <li>
+                                        <a href="viewWorkflow?editMode=V&workflow.id=<s:property value='id'/>">
+                                            <div class="clearfix">
+                                                <span class="pull-left"><s:property value="nextActivity"/></span>
+                                                <span class="pull-right">65%</span>
+                                            </div>
+                                            <div class="progress progress-mini">
+                                                <div style="width:65%" class="progress-bar"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </s:iterator>
+                            </ul>
+                        </li>
+                            
+                        <li class="dropdown-footer">
+                            <a href="findAllWorkflow">
+                                See tasks with details
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                    
+                <li class="purple dropdown-modal">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                        <span class="badge badge-important">${alertSize}</span>
+                    </a>
+                        
+                    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-exclamation-triangle"></i>
+                            ${alertSize} Notifications
+                        </li>
+                            
+                        <li class="dropdown-content">
+                            
+                            <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                <s:iterator value="alerts"> 
+                                    <li>
+                                        <a href="viewAlert?editMode=V&alert.id=<s:property value='id'/>">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+                                                    <s:property value="message"/>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                        
+                                </s:iterator>
+                            </ul>
+                        </li>
+                            
+                        <li class="dropdown-footer">
+                            <a href="findAllAlerts">
+                                See all notifications
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                    
+                <li class="green dropdown-modal">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                        <span class="badge badge-success">${messageSize}</span>
+                    </a>
+                        
+                    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-envelope-o"></i>
+                            ${messageSize} Messages
+                        </li>
+                            
+                        <li class="dropdown-content">
+                            <ul class="dropdown-menu dropdown-navbar">
+                                <s:iterator value="messages">
+                                    <li>
+                                        <a href="viewMessage?editMode=V&message.id=<s:property value='id'/>" class="clearfix">
+                                            <img src="message1600.png" class="msg-photo" alt=" Avatar" />
+                                            <span class="msg-body">
+                                                <span class="msg-title">
+                                                    <span class="blue"><s:property value="name"/>:</span>
+                                                    <s:property value="message"/>
+                                                </span>
+                                                    
+                                                <span class="msg-time">
+                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                    <span>a moment ago</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </s:iterator>
+                            </ul>
+                        </li>
+                            
+                        <li class="dropdown-footer">
+                            <a href="findAllMessages">
+                                See all messages
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                    
+                <li class="light-blue dropdown-modal">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+                        <span class="user-info">
+                            <small>Welcome,</small>
+                            <s:property value="user.loginId"/>
+                        </span>
+                            
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+                        
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+                            
+                        <li>
+                            <a href="profilePage">
+                                <i class="ace-icon fa fa-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                            
+                        <li class="divider"></li>
+                            
+                        <li>
+                            <a href="logOffHome">
+                                <i class="ace-icon fa fa-power-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.navbar-container -->
+</div>
+<!-- End Nav Bar -->

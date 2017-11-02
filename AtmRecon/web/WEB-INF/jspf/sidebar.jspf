@@ -1,0 +1,239 @@
+<!--Sidebar code-->
+<%@ page pageEncoding="UTF-8" %>
+
+<style>
+    i {
+        color:;
+    }
+</style>
+    
+<div id="sidebar" class="sidebar responsive ace-save-state">
+    <ul class="nav nav-list">
+        <!-- Dashboard item -->
+        <li>
+            <a href="initHome">
+                <i class="menu-icon fa fa-home"></i>
+                <span class="menu-text"> Home </span>
+            </a>
+        </li>
+         <!-- Administration item -->
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text">
+                    Administration
+                </span>
+                    
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+                
+            <b class="arrow"></b>
+            <!-- administration icon sub menu -->
+            <ul class="submenu">
+                <li class="">
+                    <a href="initUser">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                            
+                        Manage User
+                        <!--<b class="arrow fa fa-angle-down"></b>-->
+                    </a>
+                        
+                    <b class="arrow"></b>
+                        
+                    <!--								<ul class="submenu">
+                                                                                            <li class="">
+                                                                                                    <a href="initUser">
+                                                                                                            <i class="menu-icon fa fa-caret-right"></i>
+                                                                                                            Create User
+                                                                                                    </a>
+                                                                                                        
+                                                                                                    <b class="arrow"></b>
+                                                                                            </li>
+                                                                                                
+                                                                                            <li class="">
+                                                                                                    <a href="two-menu-1.html">
+                                                                                                            <i class="menu-icon fa fa-caret-right"></i>
+                                                                                                            Edit User
+                                                                                                    </a>
+                                                                                                        
+                                                                                                    <b class="arrow"></b>
+                                                                                            </li>
+                                                                                                
+                                                                                            <li class="">
+                                                                                                    <a href="two-menu-2.html">
+                                                                                                            <i class="menu-icon fa fa-caret-right"></i>
+                                                                                                            Deactivate User
+                                                                                                    </a>
+                                                                                                        
+                                                                                                    <b class="arrow"></b>
+                                                                                            </li>
+                                                                                                
+                                                                                                
+                                                                                                                            </ul>-->
+                </li>
+                 <!--terminal -->
+                <li class="">
+                 <a href="initAgent">
+                <i class="menu-icon fa fa-terminal"></i>
+                <span class="menu-text"> Manage Terminal </span>
+                 </a>
+                <b class="arrow"></b>
+                </li>
+                       
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                            
+                        Manage Role
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                        
+                    <b class="arrow"></b>
+                        
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="initTask">
+                                <i class="menu-icon fa fa-leaf green"></i>
+                                Task
+                            </a>
+                                
+                            <b class="arrow"></b>
+                        </li>
+                            
+                        <li class="">
+                            <a href="initRole">
+                                <i class="menu-icon fa fa-pencil orange"></i>
+                                    
+                                Role
+                                    
+                            </a>
+                                
+                            <b class="arrow"></b>
+                        </li>
+                            
+                            
+                            
+                    </ul>
+                </li>
+                
+            </ul>
+        </li>
+            
+        <!-- commumication menu -->
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> Communication </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <!--communication submenu -->
+            <ul class="submenu">
+                <li class="">
+                    <a href="initAlert">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Alerts
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="initMessages">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Messages
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="initWorkflow">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Workflow
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+        <!--Branch-->
+        <li class="">
+            <a href="initBranch">
+                <i class="menu-icon fa fa-road"></i>
+                <span class="menu-text"> Branch </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+        
+        <!--analytic -->
+        <li class="">
+            <a href="initAnalytics">
+                <i class="menu-icon fa fa-line-chart"></i>
+                <span class="menu-text"> Analytics </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+         <!-- journal menu -->
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-archive"></i>
+                <span class="menu-text"> Journal </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <!--journal submenu -->
+            <ul class="submenu">
+                <li class="">
+                    <a href="initJournalViewer">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-file"></i>
+                        Viewer
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="initFile">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-download"></i>
+                        Download
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+                <li class="">
+                    <a href="initReport">
+                        <i class="menu-icon fa fa-clone"></i>
+			<span class="menu-text"> Report </span>
+                    </a>
+
+		<b class="arrow"></b>
+					</li>
+<!--        <li class="">
+            <a href="initJournalViewer">
+                <i class="menu-icon fa fa-file"></i>
+                <span class="menu-text">Journal Viewer</span>
+            </a>
+            <b class="arrow"></b>
+        </li>-->
+<!--        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-file-o"></i>
+                <span class="menu-text">
+                    Other Pages
+                </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li class="">
+                    <a href="template">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Full Template Link
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>-->
+    </ul><!-- /.nav-list -->
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+</div>
+    

@@ -1,0 +1,16 @@
+<!--Sidebar code-->
+<%@ page pageEncoding="UTF-8" %>
+
+			<div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+                                                    <a href="http://activedgetechnologies.com" style="text-decoration:none;"><span class="blue bolder">ActivEdge Technologies</span>
+							</a>2017
+						</span>
+
+						&nbsp; &nbsp;
+						
+					</div>
+				</div>
+			</div>
